@@ -36,4 +36,10 @@ searchInput.addEventListener("input", function () {
     // Show or hide based on match
     row.style.display = matchFound || !filter ? "" : "none";
   });
+
+  // Prevent form from refreshing the page
+document.querySelector(".search-bar form").addEventListener("submit", function (e) {
+  e.preventDefault();
+});
+});
 });
