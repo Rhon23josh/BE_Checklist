@@ -38,8 +38,8 @@ searchInput.addEventListener("input", function () {
   });
 
   // Prevent form from refreshing the page
-document.querySelector(".search-bar form").addEventListener("submit", function (e) {
-  e.preventDefault();
-});
+    document.querySelector(".search-bar form").addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
 });
 });
