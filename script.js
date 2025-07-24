@@ -1,5 +1,15 @@
 const searchInput = document.getElementById("search-input");
 const searchForm = document.querySelector(".search-bar form");
+const CACHE_NAME = "be-checklist-v1";
+const urlsToCache = [
+  "/BE_Checklist/",         // main page
+  "/BE_Checklist/index.html",
+  "/BE_Checklist/styles.css",
+  "/BE_Checklist/script.js",
+  // Add PDFs if you want them offline:
+  // "/BE_Checklist/Policies/file1.pdf",
+  // "/BE_Checklist/Policies/file2.pdf",
+];
 
 function runSearch() {
   const filter = searchInput.value.toLowerCase();
@@ -44,6 +54,24 @@ searchForm.addEventListener("submit", function (e) {
   runSearch();
 });
 
+// Install event - cache files
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache);
+    })
+  );
+});
+
+// Fetch event - serve cached content if offline
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+
 // PWA SERVICE WORKER REGISTRATION
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
@@ -51,3 +79,4 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker Registered"))
     .catch((err) => console.log("Service Worker failed:", err));
 }
+
