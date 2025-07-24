@@ -1,0 +1,179 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #272822;
+  color: #f8f8f2;
+  position: relative;
+  font-size: 1rem;
+}
+
+caption {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  max-width: 90%;
+  border-collapse: collapse;
+  margin: 6rem auto;
+  overflow-x: auto;
+}
+
+table tr > th:nth-of-type(1) {
+  width: 20px;
+}
+
+table tr > th:nth-of-type(3),
+table tr > th:nth-of-type(4) {
+  width: 8%;
+}
+
+td,
+th {
+  padding: 0.5rem;
+  word-wrap: break-word;
+}
+
+.number,
+.link {
+  text-align: center;
+}
+
+th {
+  background-color: #6272a4;
+}
+
+tr:nth-of-type(even) {
+  background-color: #34353a;
+}
+
+tr:nth-of-type(odd) {
+  background-color: #2c2d31;
+}
+
+.table-caption {
+  font-weight: 600;
+  text-align: left;
+  background-color: #44475a;
+}
+
+.search-bar {
+  font-family: inherit;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #272822;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.search-bar form {
+  background-color: #fff;
+  width: 50%;
+  height: 40px;
+  display: flex;
+}
+
+.search-bar form > input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.search-bar form > button {
+  background-color: tomato;
+  padding: 10px 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.fa-search {
+  align-self: center;
+  padding: 10px 20px;
+  color: #777;
+}
+
+a svg {
+  width: 25px;
+  fill: rosybrown;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+  border-radius: 2px;
+}
+
+mark,
+span {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+@media (max-width: 400px) {
+  /* Reduce table font size and spacing */
+  td,
+  th {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  /* Reduce table caption margin */
+  caption {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+
+  .search-bar {
+    padding: 1rem;
+  }
+  /* Adjust search bar width and button size */
+  .search-bar form {
+    width: 100%; /* fit within viewport */
+    height: 30px;
+  }
+
+  .search-bar form > input {
+    font-size: 0.7rem;
+    width: 60%;
+  }
+
+  .search-bar form > button {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+  }
+
+  .fa-search {
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+
+  /* Make sure table fits within small screens */
+  table {
+    width: 100%;
+    margin: 4rem auto;
+  }
+
+  a svg {
+    width: 16px;
+  }
+}
