@@ -54,27 +54,22 @@ searchForm.addEventListener("submit", function (e) {
   runSearch();
 });
 
-// Install event - cache files
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
-  );
-});
-
-
-// Fetch event - serve cached content
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      // If homepage requested, serve cached index.html
-      if (!response && event.request.mode === "navigate") {
-        return caches.match("/BE_Checklist/index.html");
-      }
-      return response || fetch(event.request);
-    })
-  );
+  // Handle navigation requests (like /BE_Checklist/)
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      caches.match("/BE_Checklist/index.html").then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  } else {
+    // Handle normal file requests (CSS, JS, PDFs)
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
 
 // PWA SERVICE WORKER REGISTRATION
