@@ -1,11 +1,11 @@
 const searchInput = document.getElementById("search-input");
+const searchForm = document.querySelector(".search-bar form");
 
-searchInput.addEventListener("input", function () {
-  const filter = this.value.toLowerCase();
+function runSearch() {
+  const filter = searchInput.value.toLowerCase();
   const rows = document.querySelectorAll("table tbody tr");
 
   rows.forEach((row) => {
-    // Keep table captions visible always
     if (row.classList.contains("table-caption")) {
       row.style.display = "";
       return;
@@ -16,12 +16,10 @@ searchInput.addEventListener("input", function () {
     row.querySelectorAll("td").forEach((cell) => {
       const rawText = cell.textContent;
 
-      // Save original HTML once
       if (!cell.dataset.originalHtml) {
         cell.dataset.originalHtml = cell.innerHTML;
       }
 
-      // Highlight if match found
       if (filter && rawText.toLowerCase().includes(filter)) {
         matchFound = true;
         cell.innerHTML = rawText.replace(
@@ -33,13 +31,15 @@ searchInput.addEventListener("input", function () {
       }
     });
 
-    // Show or hide based on match
     row.style.display = matchFound || !filter ? "" : "none";
   });
+}
 
-  // Prevent form from refreshing the page
-    document.querySelector(".search-bar form").addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
-});
+// Run search when typing
+searchInput.addEventListener("input", runSearch);
+
+// Run search when clicking button (submit)
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  runSearch();
 });
