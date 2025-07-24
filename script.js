@@ -63,10 +63,15 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Fetch event - serve cached content if offline
+
+// Fetch event - serve cached content
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
+      // If homepage requested, serve cached index.html
+      if (!response && event.request.mode === "navigate") {
+        return caches.match("/BE_Checklist/index.html");
+      }
       return response || fetch(event.request);
     })
   );
