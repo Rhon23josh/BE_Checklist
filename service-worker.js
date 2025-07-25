@@ -50,12 +50,41 @@ self.addEventListener("install", (event) => {
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      // Return cached file
+      if (response) {
+        return response;
+      }
+
+      // Special case: handle root request `/BE_Checklist/`
+      if (event.request.mode === "navigate") {
+        return caches.match("/BE_Checklist/index.html");
+      }
+
+      // Fallback: try network
+      return fetch(event.request).catch(() => {
+        // Optionally return fallback page or nothing
+      });
     })
   );
 });
