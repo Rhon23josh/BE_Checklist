@@ -44,7 +44,7 @@ const urlsToCache = [
   "/BE_Checklist/Policies/Be_56_Reiteration%20of%20Damage%20Policy.pdf",
 ];
 
-self.addEventListener("install", (event) => {
+elf.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urlsToCache);
@@ -55,11 +55,11 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
           }
         })
       );
@@ -70,21 +70,18 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Return cached file
-      if (response) {
-        return response;
+    caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
       }
 
-      // Special case: handle root request `/BE_Checklist/`
+      // For navigation (homepage)
       if (event.request.mode === "navigate") {
         return caches.match("/BE_Checklist/index.html");
       }
 
-      // Fallback: try network
-      return fetch(event.request).catch(() => {
-        // Optionally return fallback page or nothing
-      });
+      // Try network, fallback to cache if network fails
+      return fetch(event.request).catch(() => caches.match(event.request));
     })
   );
 });
