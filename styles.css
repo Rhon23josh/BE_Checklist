@@ -129,8 +129,8 @@ span {
   line-height: inherit;
 }
 
+/* 400px and below */
 @media (max-width: 400px) {
-  /* Reduce table font size and spacing */
   td,
   th {
     font-size: 0.6rem;
@@ -142,7 +142,6 @@ span {
     width: 15%;
   }
 
-  /* Reduce table caption margin */
   caption {
     margin-bottom: 10px;
     font-size: 0.8rem;
@@ -151,9 +150,9 @@ span {
   .search-bar {
     padding: 1rem;
   }
-  /* Adjust search bar width and button size */
+
   .search-bar form {
-    width: 100%; /* fit within viewport */
+    width: 100%;
     height: 30px;
   }
 
@@ -172,7 +171,6 @@ span {
     font-size: 0.7rem;
   }
 
-  /* Make sure table fits within small screens */
   table {
     width: 100%;
     margin: 4rem auto;
@@ -180,5 +178,98 @@ span {
 
   a svg {
     width: 16px;
+  }
+}
+/* === 401px to 600px (small phones, larger screens) === */
+/* === 401px to 600px (small phones, larger screens) === */
+@media (min-width: 401px) and (max-width: 600px) {
+  td,
+  th {
+    font-size: 0.6rem;
+    padding: 0.5rem;
+  }
+
+  table {
+    margin: 2rem auto;
+  }
+
+  table tr > th:nth-of-type(3),
+  table tr > th:nth-of-type(4) {
+    width: 15%;
+  }
+
+  caption {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+
+  .search-bar {
+    padding: 1rem;
+  }
+
+  .search-bar form {
+    width: 100%;
+    height: 30px;
+  }
+
+  .search-bar form > input {
+    font-size: 0.7rem;
+    width: 60%;
+  }
+
+  .search-bar form > button {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+  }
+
+  .fa-search {
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  td,
+  th {
+    font-size: 0.6rem;
+    padding: 0.5rem;
+  }
+
+  table {
+    margin: 5rem auto;
+  }
+
+  table tr > th:nth-of-type(3),
+  table tr > th:nth-of-type(4) {
+    width: 10%;
+  }
+
+  caption {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+
+  .search-bar {
+    padding: 1rem;
+  }
+
+  .search-bar form {
+    width: 60%;
+    height: 30px;
+  }
+
+  .search-bar form > input {
+    font-size: 0.7rem;
+    width: 60%;
+  }
+
+  .search-bar form > button {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+  }
+
+  .fa-search {
+    padding: 5px;
+    font-size: 0.7rem;
   }
 }
