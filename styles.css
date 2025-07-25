@@ -133,8 +133,13 @@ span {
   /* Reduce table font size and spacing */
   td,
   th {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     padding: 0.5rem;
+  }
+
+  table tr > th:nth-of-type(3),
+  table tr > th:nth-of-type(4) {
+    width: 15%;
   }
 
   /* Reduce table caption margin */
