@@ -44,23 +44,7 @@ searchForm.addEventListener("submit", function (e) {
   runSearch();
 });
 
-self.addEventListener("fetch", (event) => {
-  // Handle navigation requests (like /BE_Checklist/)
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      caches.match("/BE_Checklist/index.html").then((response) => {
-        return response || fetch(event.request);
-      })
-    );
-  } else {
-    // Handle normal file requests (CSS, JS, PDFs)
-    event.respondWith(
-      caches.match(event.request).then((response) => {
-        return response || fetch(event.request);
-      })
-    );
-  }
-});
+
 
 
 // PWA SERVICE WORKER REGISTRATION
