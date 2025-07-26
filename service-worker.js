@@ -14,6 +14,7 @@ const urlsToCache = [
   "/BE_Checklist/Policies/BE_8_Accounts%20Receivables.pdf",
   "/BE_Checklist/Policies/BE_9_Conditions%20on%20Deposit%20Requirement.pdf",
   "/BE_Checklist/Policies/BE_11_ Guidelines%20in%20Forfeiture%20of%20Accounts%20Receivable.pdf",
+  "/BE_Checklist/Policies/BE_12_Proper%20Care%20and%20Maintenance%20of%20Engineering%20Equipment.pdf",
   "/BE_Checklist/Policies/BE_13_RETURNING%20OF%20ENGINEERING%20ITEMS%20TO%20ED%20-%20UPDATED.pdf",
   "/BE_Checklist/Policies/BE_13_Fixed%20assets%20disposal.pdf",
   "/BE_Checklist/Policies/BE_14_EO-ED%20STOCK%20TRANSFER%20TO%20ENGINEERING%20-%20OPTICAL%20EQUIPMENT.pdf",
