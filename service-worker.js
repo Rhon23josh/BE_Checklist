@@ -37,6 +37,7 @@ const urlsToCache = [
   "/BE_Checklist/Policies/BE_30_Standard%20Charging%20for%20Non%20Displaying%20of%20Monthly%20POPs.pdf",
   "/BE_Checklist/Policies/BE_30_Amendment%20of%20Marketing%20Collaterals%20Guidelines.pdf",
   "/BE_Checklist/Policies/BE_31_Prohibition%20on%20Displaying%20Duplicate%20Items.pdf",
+  "/BE_Checklist/Policies/BE_34_Uniform and Grooming Policy_July2025.pdf",
   "/BE_Checklist/Policies/BE_35_Spiel%20on%20CEG%20Processing%20Time.pdf",
   "/BE_Checklist/Policies/BE_37_Encoding%20and%20submission%20of%20Corporate%20Acct.pdf",
   "/BE_Checklist/Policies/BE_41_Timekeeping%20policy.pdf",
