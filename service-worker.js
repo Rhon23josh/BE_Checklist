@@ -42,7 +42,7 @@ const urlsToCache = [
   "/BE_Checklist/Policies/BE_41_Timekeeping%20policy.pdf",
   "/BE_Checklist/Policies/BE_54_Simplified%20Policy%20on%20Lens%20Only%20Transaction%20.pdf",
   "/BE_Checklist/Policies/BE_55_Policy%20on%20Unclaimed%20Fully%20Paid%20Items.pdf",
-  "/BE_Checklist/Policies/Be_56_Reiteration%20of%20Damage%20Policy.pdf",
+  "/BE_Checklist/Policies/Be_56_Reiteration%20of%20Damage%20Policy%20copy.pdf",
 ];
 
 elf.addEventListener("install", (event) => {
